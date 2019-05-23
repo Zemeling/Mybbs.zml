@@ -9,7 +9,8 @@ namespace Mybbs.zml
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Scripts/jquery-{version}.js",
+                        "~/Scripts/jquery.extension.core.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -19,13 +20,26 @@ namespace Mybbs.zml
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
+            //bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
+            //          "~/Scripts/bootstrap.js",
+            //          "~/Scripts/respond.js"));
+
+            //bundles.Add(new StyleBundle("~/Content/css").Include(
+            //          "~/Content/bootstrap.css",
+            //          "~/Content/site.css"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/themes/metro/easyui.css",
+                      "~/Content/themes/icon.css",
+                      "~/Content/themes/jeasyui.extensions.css",
+                      "~/Content/themes/common.css"));
+
+            var easyui = new ScriptBundle("~/bundles/easyui").Include(
+                "~/Scripts/jquery.easyui-{version}.js",
+                "~/Scripts/jquery.easyui-{version}.min.js"
+                );
+            easyui.Transforms.Clear();
+            bundles.Add(easyui);
         }
     }
 }

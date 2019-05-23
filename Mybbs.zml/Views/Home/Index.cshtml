@@ -1,21 +1,583 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "首页";
 }
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" contentop-toolbart="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <title>首页-百源科技</title>
+    @*<link rel="shortcut icon" href="/favicon.ico" />*@
+    @Styles.Render("~/Content/css")
+    <script>
+        var start = new Date();
+    </script>
+    <style>
+        .span_active {
+            background: #6495ed !important;
+            color: #fff !important
+        }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+        .active {
+            display: block !important
+        }
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        #leftMenu {
+            border: 0;
+            padding-top: 10px;
+            /*background: #323852*/
+        }
+
+        .layout-panel-west .accordion-noborder .accordion-body {
+            background: #E0EEE0
+        }
+
+        .layout-panel .accordion .accordion-header-selected {
+            background: 0 0
+        }
+
+        .layout-panel-west.layout-panel #leftMenu .selected .panel-title {
+            color: #fff
+        }
+
+        /*.layout-expand-west.layout-expand {
+            background: #d2e6dc
+        }*/
+
+        .layout-panel-west #leftMenu .panel-title {
+            /*color: #b8c7ce;*/
+            font-size: 14px
+        }
+
+        #leftMenu.accordion ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none
+        }
+
+            #leftMenu.accordion ul li {
+                padding: 0
+            }
+
+                #leftMenu.accordion ul li a {
+                    display: block;
+                    padding-left: 30px;
+                    margin-top: 1px;
+                    height: 30px;
+                    line-height: 30px;
+                    background: #FFFFF0;
+                    color: #1d292f;
+                    box-sizing: border-box;
+                    font-size: 14px
+                }
+
+                    #leftMenu.accordion ul li a:hover {
+                        /*color: black;*/
+                        background: #e2e2c1;
+                        cursor: pointer;
+                        font-weight: 600
+                    }
+
+                    #leftMenu.accordion ul li a.selected {
+                        background: #FFF8DC;
+                        /*color: #fff;*/
+                        cursor: default
+                    }
+
+        .offerings span, .purchases span, .financings span {
+            overflow: hidden;
+            width: 173px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            display: inline-block;
+            color: black !important;
+            font-weight: 400 !important;
+        }
+
+        #mainTabs .tabs {
+            border: 0
+        }
+
+            #mainTabs .tabs .tabs-icon {
+                display: none
+            }
+
+            #mainTabs .tabs li a.tabs-inner {
+                min-width: 36px;
+                border: 0;
+                background: #fff;
+                border-radius: 0;
+                padding: 0 20px
+            }
+
+            #mainTabs .tabs .tabs-title {
+                padding-left: 0;
+                font-size: 16px;
+                color: #636b7d
+            }
+
+        #mainTabs .tabs-selected .tabs-title {
+            color: #5a9cf9
+        }
+
+        #mainTabs .tabs-header {
+            background: #fff;
+            padding-left: 8px;
+            padding-right: 150px
+        }
+
+            #mainTabs .tabs-header .tabs-scroller-right {
+                right: 150px
+            }
+
+        #mainTabs .tabs-selected {
+            border-bottom: 3px solid #5a9cf9
+        }
+
+        #mainTabs .tabs li {
+            margin: 0
+        }
+
+        #mainTabs .tabs-scroller-left, #mainTabs .tabs-scroller-right {
+            border: 0;
+            background-color: #5a9cf9
+        }
+    </style>
+</head>
+<body>
+    <div id="cc" class="easyui-layout" data-options="fit: true">
+        <div data-options="region:'west', iconCls: 'icon-nav',split:true" style="width:187px;">
+            <div>
+                <a href="#">
+                    <div class="logo_div" style="margin-top:10px">
+                        <img src="~/Content/images/logo1.jpg" alt="Alternate Text" />
+                    </div>
+                </a>
+            </div>
+            <div id="leftMenu"></div>
+        </div>
+        <div data-options="region:'center',hideExpandTool:true" style="background:#eee;">
+            <div class="easyui-layout" data-options="fit:true">
+                <div data-options="region:'north',split:true" style="height:35px;">
+                    <div style="float:left">
+                        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-save'"></a>
+                    </div>
+                    <div id="tt" style="text-align:end">
+                        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-save'">Button 1</a>
+                        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-save'">Save</a>
+                        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-save'">Button 3</a>
+                        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-save'">Button 4</a>
+                        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-message'">120</a>
+                    </div>
+                </div>
+                <div data-options="region:'east',split:true" style="width:100px"></div>
+                <div data-options="region:'center'">
+                    <div id="mainTabs" data-options="fit: true, border: false, showOption: false, enableNewTabMenu: false, tools: '#mainTabs_tools', enableJumpTabMenu: true,tabHeight:50">
+                        <div id="homePanel" data-options="title: '主页',refreshable:false" style="padding: 8px; ">
+                            <div class="Manage_box">
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/easyui")
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="~/Scripts/mainTab.js"></script>
+
+    <script type="text/javascript">
+        var hash = window.location.hash;
+        var homePageTitle = "主页",
+            homePageHref = null,
+            mainTabs = "#mainTabs",
+            //mainLayout = "#mainLayout",
+            leftMenu = "#leftMenu",
+            btnInternalMessage = '#btnInternalMessage',
+            defaultIcon = 'icon-standard-application-view-list',
+            childDefaultIcon = 'icon-standard-add',
+            btnFullScreen = ".fullScreen",
+            btnExit = "#btnExit";
+        $(function () {
+            //$(mainLayout).removeClass("hidden").layout();
+            var stop = new Date();
+            //$.messager.showInfoBottomRight('系统提示', "当前页面加载耗时(毫秒)：" + $.date.diff(start, "ms", stop) + "," + $.date.diff(start, "ms", a) + "," + $.date.diff(a, "ms", stop));
+            window.mainpage.init();
+        });
+        //$(window).resize(function () {
+        //    var height1 = $(window).height();
+        //    $(mainLayout).attr("style", "width:100%;height:" + height1 + "px");
+        //    $(mainLayout).layout("resize", {
+        //        width: "100%",
+        //        height: height1 + "px"
+        //    });
+        //});
+        (function ($) {
+            $.util.namespace("mainpage.mainTabs");
+            window.mainpage.tabDefaultOption = {
+                title: "新建选项卡", href: "", iniframe: true, closable: true, refreshable: false, iconCls: "icon-standard-application-form1", repeatable: false, selected: true
+            };
+
+            window.mainpage.init = function () {
+                //window.mainpage.bindToolbarButtonEvent();
+                window.mainpage.initMainMenus();
+                $('.homeLayout').layout();
+                $(mainTabs).tabs();
+                $('.homeNoticePanel').panel();
+                //$(mainTabs).tabs({ onSelect: function (title, index) { window.mainpage.mainTabs.updateHash(index); } });
+                $('#eastLayout').layout();
+                $('.calendar').calendar({
+                    current: new Date()
+                });
+
+                $('.accountInfo').click(function (event) {
+                    if ($('.otherInfo').is(":hidden")) {
+                        $('.otherInfo').show();
+                    } else {
+                        $('.otherInfo').hide();
+                    }
+                    event.stopPropagation();
+                });
+                $('.otherInfo').click(function () {
+                    $('.otherInfo').hide();
+                });
+                $('body').click(function (event) {
+                    $('.otherInfo').hide();
+                });
+                //var height1 = $(window).height();
+                //$(mainLayout).attr("style", "width:100%;height:" + height1 + "px");
+                //$(mainLayout).layout("resize", {
+                //    width: "100%",
+                //    height: height1 + "px"
+                //});
+
+            };
+
+
+            //  初始化应用程序主界面左侧面板中“导航菜单”的数据，并加载特定的子菜单树数据。
+            window.mainpage.initMainMenus = function () {
+                //$.easyui.loading({ locale: leftMenuLayout });
+                //$.get(getMenusUrl, function (data) {
+                //    menuData = data;
+                //    window.mainpage.loadMenu(data);
+                //    $.easyui.loaded(leftMenuLayout);
+                //    //window.mainpage.mainTabs.loadHash(hash);
+                //    var hashCookie = unescape(getCookie("showedTabs"));
+                //    $.each(hashCookie.split(","), function (index, value) {
+                //        hashs.push(value);
+                //        window.mainpage.mainTabs.loadHash(value);
+                //    });
+                //});
+                //先写死菜单，后再动态获取数据表数据
+                var menus = [{ "id": "1", "text": "基础数据", "children": [{ "id": "11", "text": "行业" }, { "id": "12", "text": "类型" }] }, { "id": "2", "text": "资讯管理", "children": [{ "id": "22", "text": "资讯" }] }, { "id": "3", "text": "帖子管理", "children": [{ "id": "31", "text": "帖子" }] }, { "id": "4", "text": "规则管理", "children": [{ "id": "41", "text": "规则" }] }, { "id": "5", "text": "挑战管理", "children": [{ "id": "51", "text": "挑战" }] }, { "id": "6", "text": "题库管理", "children": [{ "id": "61", "text": "题库" }] }, { "id": "7", "text": "用户管理", "children": [{ "id": "71", "text": "用户信息" }] }];
+                window.mainpage.loadMenu(menus);
+            };
+
+            window.mainpage.loadMenu = function (menus) {
+                var $leftMenu = $(leftMenu).empty();
+                var menulist = "";
+                $.each(menus, function (i, n) {
+                    menulist += '<div title="' + n.text + '" data-options="iconCls:\'' + (n.SmallIcon == null ? defaultIcon : n.SmallIcon) + '\'"  style="overflow:auto;">';
+                    menulist += '<ul>';
+                    $.each(n.children, function (j, o) {
+                        menulist += '<li id="menu_' + o.id + '"' + (o.IsActive ? 'class="selected"' : '') + '><div><a target="mainFrame"><span class="icon ' + (o.SmallIcon == null ? childDefaultIcon : o.SmallIcon) + '" ></span>' + o.text + '</a></div></li> ';
+                    });
+                    menulist += '</ul></div>';
+                });
+                $leftMenu.append(menulist);
+
+                $('li a', $leftMenu).click(function () {
+                    var $this = $(this);
+                    var ret = {
+                        title: $this.text(),
+                        iniframe: true,
+                        closable: true,
+                        refreshable: false,
+                        iconCls: $('span', $this).prop('class'),
+                        repeatable: false,
+                        selected: true
+                    };
+                    if (window.parent.mainpage.mainTabs.isExists(ret.title) != 0) {
+                        window.parent.mainpage.mainTabs.closeTab(ret.title);
+                    }
+                    window.mainpage.mainTabs.addModuleTab($.extend(window.mainpage.tabDefaultOption, ret));
+                    //window.mainpage.mainTabs.updateHash(ret);
+                    $('li a', $leftMenu).removeClass("selected");
+                    $this.addClass("selected");
+                }).hover(function () {
+                    $(this).addClass("hover");
+                }, function () {
+                    $(this).removeClass("hover");
+                });
+
+                $leftMenu.accordion({
+                    animate: false,
+                    border: false,
+                    fit: true
+                });
+                $('#leftMenu li.selected a').trigger('click');
+
+                var $panels = $leftMenu.accordion('panels');
+                $.each($panels, function (i, n) {
+                    if ($('li.selected', n).length) {
+                        $leftMenu.accordion('select', i);
+                        return;
+                    }
+                });
+            };
+
+            window.mainpage.mainTabs.addModuleTab = function (node) {
+                var n = node || {}, attrs = node.attributes || {}, opts = $.extend({}, n, { title: n.text }, attrs);
+                //if (!opts.href) { return; }
+                window.mainpage.mainTabs.addModule(opts);
+            };
+            //  判断指定的选项卡是否存在于当前主页面的选项卡组中；
+            //  返回值：返回的值可能是以下几种：
+            //      0:  表示不存在于当前选项卡组中；
+            //      1:  表示仅 title 值存在于当前选项卡组中；
+            //      2:  表示 title 和 href 都存在于当前选项卡组中；
+            window.mainpage.mainTabs.isExists = function (title, href) {
+                var t = $(mainTabs), tabs = t.tabs("tabs"), array = $.array.map(tabs, function (val) { return val.panel("options"); }),
+                    list = $.array.filter(array, function (val) { return val.title == title; }), ret = list.length ? 1 : 0;
+                //if (ret && $.array.some(list, function (val) { return val.href.split("?")[0] == href.split("?")[0]; })) { ret = 2; }
+                return ret;
+            };
+
+            window.mainpage.mainTabs.parseCreateTabArgs = function (args) {
+                var ret = {};
+                if (!args || !args.length) {
+                    $.extend(ret, window.mainpage.mainTabs.tabDefaultOption);
+                } else if (args.length == 1) {
+                    $.extend(ret, window.mainpage.mainTabs.tabDefaultOption, typeof args[0] == "object" ? args[0] : { href: args[0] });
+                } else if (args.length == 2) {
+                    $.extend(ret, window.mainpage.mainTabs.tabDefaultOption, { title: args[0], href: args[1] });
+                } else if (args.length == 3) {
+                    $.extend(ret, window.mainpage.mainTabs.tabDefaultOption, { title: args[0], href: args[1], iconCls: args[2] });
+                } else if (args.length == 4) {
+                    $.extend(ret, window.mainpage.mainTabs.tabDefaultOption, { title: args[0], href: args[1], iconCls: args[2], iniframe: args[3] });
+                } else if (args.length == 5) {
+                    $.extend(ret, window.mainpage.mainTabs.tabDefaultOption, { title: args[0], href: args[1], iconCls: args[2], iniframe: args[3], closable: args[4] });
+                } else if (args.length == 6) {
+                    $.extend(ret, window.mainpage.mainTabs.tabDefaultOption, { title: args[0], href: args[1], iconCls: args[2], iniframe: args[3], closable: args[4], refreshable: args[5] });
+                } else if (args.length >= 7) {
+                    $.extend(ret, window.mainpage.mainTabs.tabDefaultOption, { title: args[0], href: args[1], iconCls: args[2], iniframe: args[3], closable: args[4], refreshable: args[5], selected: args[6] });
+                }
+                return ret;
+            };
+
+            //  添加一个新的模块选项卡；该方法重载方式如下：
+            //      function (tabOption)
+            //      function (href)
+            //      function (title, href)
+            //      function (title, href, iconCls)
+            //      function (title, href, iconCls, iniframe)
+            //      function (title, href, iconCls, iniframe, closable)
+            //      function (title, href, iconCls, iniframe, closable, refreshable)
+            //      function (title, href, iconCls, iniframe, closable, refreshable, selected)
+            window.mainpage.mainTabs.createTab = function (title, href, iconCls, iniframe, closable, refreshable, selected) {
+                var t = $(mainTabs), i = 0, opts = window.mainpage.mainTabs.parseCreateTabArgs(arguments);
+                while (t.tabs("getTab", opts.title + (i ? String(i) : ""))) { i++; }
+                t.tabs("add", opts);
+            };
+
+            //  添加一个新的模块选项卡；该方法重载方式如下：
+            //      function (tabOption)
+            //      function (href)
+            //      function (title, href)
+            //      function (title, href, iconCls)
+            //      function (title, href, iconCls, iniframe)
+            //      function (title, href, iconCls, iniframe, closable)
+            //      function (title, href, iconCls, iniframe, closable, refreshable)
+            //      function (title, href, iconCls, iniframe, closable, refreshable, selected)
+            window.mainpage.mainTabs.addModule = function (title, href, iconCls, iniframe, closable, refreshable, selected) {
+                var opts = window.mainpage.mainTabs.parseCreateTabArgs(arguments), isExists = window.mainpage.mainTabs.isExists(opts.title, opts.href);
+                switch (isExists) {
+                    case 0: window.mainpage.mainTabs.createTab(opts); break;
+                    case 1: window.mainpage.mainTabs.createTab(opts); break;
+                    case 2: window.mainpage.mainTabs.jumeTab(opts.title, opts.href); break;
+                    default: break;
+                }
+            };
+
+            window.mainpage.mainTabs.jumeTab = function (which, href) {
+                $(mainTabs).tabs("select", which);
+                var tab = $(mainTabs).tabs('getSelected');
+                var url = $(tab).find(".panel-iframe")[0].src;
+                var newurl = url.split("?")[0] + "?" + href.split("?")[1];
+                $(tab).find(".panel-iframe")[0].src = newurl;
+            };
+
+            window.mainpage.mainTabs.jumpHome = function () {
+                var t = $(mainTabs), tabs = t.tabs("tabs"), panel = $.array.first(tabs, function (val) {
+                    var opts = val.panel("options");
+                    return opts.title == homePageTitle && opts.href == homePageHref;
+                });
+                if (panel && panel.length) {
+                    var index = t.tabs("getTabIndex", panel);
+                    t.tabs("select", index);
+                }
+            };
+
+            window.mainpage.mainTabs.jumpTab = function (which) { $(mainTabs).tabs("jumpTab", which); };
+
+            window.mainpage.mainTabs.closeTab = function (which) { $(mainTabs).tabs("close", which); };
+
+            window.mainpage.mainTabs.closeCurrentTab = function () {
+                var t = $(mainTabs), index = t.tabs("getSelectedIndex");
+                return t.tabs("closeClosable", index);
+            };
+
+            window.mainpage.mainTabs.closeOtherTabs = function (index) {
+                var t = $(mainTabs);
+                if (index == null) { index = t.tabs("getSelectedIndex"); }
+                return t.tabs("closeOtherClosable", index);
+            };
+
+            window.mainpage.mainTabs.closeLeftTabs = function (index) {
+                var t = $(mainTabs);
+                if (index == null) { index = t.tabs("getSelectedIndex"); }
+                return t.tabs("closeLeftClosable", index);
+            };
+
+            window.mainpage.mainTabs.closeRightTabs = function (index) {
+                var t = $(mainTabs);
+                if (index == null) { index = t.tabs("getSelectedIndex"); }
+                return t.tabs("closeRightClosable", index);
+            };
+
+            window.mainpage.mainTabs.closeAllTabs = function () {
+                return $(mainTabs).tabs("closeAllClosable");
+            };
+
+            //window.mainpage.hideNorth = function () { $(mainLayout).layout("collapse", "north"); };
+
+            //window.mainpage.showNorth = function () { $(mainLayout).layout("expand", "north"); };
+
+            //window.mainpage.hideEast = function () { $(mainLayout).layout("collapse", "east"); };
+
+            //window.mainpage.togglePanels = function () {
+            //    var regions = ["east", "west"];// "north", "south",
+            //    var opts = $(mainLayout).layout("panel", "east").panel("options");
+            //    var state = opts.collapsed;
+            //    regions.forEach(function (index) {
+            //        $(mainLayout).layout(!state ? "collapse" : "expand", index);
+            //    });
+            //};
+
+            //window.mainpage.bindToolbarButtonEvent = function () {
+            //    var l = $(mainLayout), north = l.layout("panel", "north"), panel = north.panel("panel"),
+            //        toolbar = $("#toolbar"), topbar = $("#topbar"),
+            //        opts = north.panel("options"), onCollapse = opts.onCollapse, onExpand = opts.onExpand;
+            //    opts.onCollapse = function () {
+            //        if ($.isFunction(onCollapse)) { onCollapse.apply(this, arguments); }
+
+            //        toolbar.insertBefore(panel).addClass("top-toolbar-topmost");
+            //    };
+            //    opts.onExpand = function () {
+            //        if ($.isFunction(onExpand)) { onExpand.apply(this, arguments); }
+
+            //        toolbar.insertAfter(topbar).removeClass("top-toolbar-topmost");
+            //    };
+
+            //    //$(btnInternalMessage).click(function () {
+            //    //    var ret = {
+            //    //        title: '通知信息',
+            //    //        href: '/Home/Message',
+            //    //        iniframe: true,
+            //    //        closable: true,
+            //    //        refreshable: false,
+            //    //        iconCls: 'icon-standard-application-side-list',
+            //    //        repeatable: false,
+            //    //        selected: true
+            //    //    };
+            //    //    window.mainpage.mainTabs.addModuleTab($.extend(window.mainpage.tabDefaultOption, ret));
+            //    //    window.mainpage.mainTabs.updateHash(ret);
+            //    //});
+
+            //    //$(btnFullScreen).linkbutton().click(function () {
+            //    //    window.mainpage.togglePanels();
+            //    //});
+
+            //    //$(btnExit).click(function () {
+            //    //    $.easyui.messager.confirm("操作提醒", "您确定要退出当前程序并关闭该网页？", function (c) {
+            //    //        if (c) {
+            //    //            window.location = "/Home/SignOut";
+            //    //        }
+            //    //    });
+            //    //});
+            //};
+
+            window.mainpage.mainTabs.loadHash = function (hash) {
+                while (hash.left(1) === "#") {
+                    hash = hash.substr(1);
+                }
+                if (hash.isNullOrWhiteSpace()) {
+                    return;
+                }
+                //if (menuData == null || menuData.length === 0) return;
+                for (var i = 0, len = menuData.length; i < len; i++) {
+                    if (menuData[i].children.length) {
+                        for (var j = 0; j < menuData[i].children.length; j++) {
+                            if ((hash + "/").indexOf(menuData[i].children[j].URL + "/") > -1) {
+                                window.mainpage.mainTabs.initJump(menuData[i].children[j]);
+                                $(leftMenu).accordion('select', i);
+                                return false;
+                            }
+                        }
+                    }
+                }
+                var title = '';
+                var reg = new RegExp("[\?\&][^\?\&]+=[^\?\&]+", "g");
+                var result = hash.substr(1).match(reg);
+                if (result != null) {
+                    for (var i = 0; i < result.length; i++) {
+                        var query = result[i].substring(1).split("=");
+                        if (query != null && query[0] == 'title')
+                            title = decodeURIComponent(query[1]);
+                    }
+                }
+                window.mainpage.mainTabs.initJump({ text: title, URL: hash, iconCls: 'icon-standard-application-side-list' });
+            };
+
+            window.mainpage.mainTabs.updateHash = function (opts) {
+                //var opts = $(mainTabs).tabs("getTab", index).panel("options");
+                //window.location.hash = opts.href ? opts.href : "";
+                //if ($.inArray(opts.href, hashs) < 1) hashs.push(opts.href ? opts.href : "");
+                //deleteCookie("showedTabs");
+            };
+
+            window.mainpage.mainTabs.initJump = function (menu) {
+                var ret = {
+                    title: menu.text,
+                    href: menu.URL,
+                    iniframe: true,
+                    closable: true,
+                    refreshable: false,
+                    iconCls: menu.iconCls,
+                    repeatable: false,
+                    selected: true
+                };
+                window.mainpage.mainTabs.addModuleTab($.extend(window.mainpage.tabDefaultOption, ret));
+            };
+            //获取信息条数
+            //window.mainpage.syncUnReadMessageCount = function () {
+            //    $.post(getCountUrl, function (data) {
+            //        if (data >= 0) {
+            //            var res = $("#btnMessageCount").html(data);
+            //        }
+
+            //    });
+            //};
+
+
+        })(jQuery);
+
+    </script>
+</body>
+</html>

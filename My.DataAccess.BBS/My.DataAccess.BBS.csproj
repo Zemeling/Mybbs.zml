@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>a52a5ef4-ee60-466b-9d0d-493a1d767cbf</ProjectGuid>
+    <ProjectGuid>{A52A5EF4-EE60-466B-9D0D-493A1D767CBF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>My.DataAccess.BBS</RootNamespace>
@@ -30,24 +30,66 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System"/>
-    
-    <Reference Include="System.Core"/>
-    <Reference Include="System.Xml.Linq"/>
-    <Reference Include="System.Data.DataSetExtensions"/>
-    
-    
-    <Reference Include="Microsoft.CSharp"/>
-    
-    <Reference Include="System.Data"/>
-    
-    <Reference Include="System.Net.Http"/>
-    
-    <Reference Include="System.Xml"/>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Migrations\201905220801495_InitialDataBaseRollBack.cs" />
+    <Compile Include="Migrations\201905220801495_InitialDataBaseRollBack.Designer.cs">
+      <DependentUpon>201905220801495_InitialDataBaseRollBack.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905230127533_InitialDataBase.cs" />
+    <Compile Include="Migrations\201905230127533_InitialDataBase.Designer.cs">
+      <DependentUpon>201905230127533_InitialDataBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="MyBBSContext.cs" />
+    <Compile Include="MyBBSDatabaseInitializer.cs" />
+    <Compile Include="MyBBSUnitOfWorkContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\My.Common\My.Common.csproj">
+      <Project>{cfacb9fd-a03d-4d62-bb28-88d3b0f6efcc}</Project>
+      <Name>My.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\My.Domain.Core\My.Domain.Core.csproj">
+      <Project>{482cc5f6-9927-45db-953d-77780c673674}</Project>
+      <Name>My.Domain.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\My.Model.BBS\My.Model.BBS.csproj">
+      <Project>{0413742b-9d66-4678-a3be-7a79ee11b249}</Project>
+      <Name>My.Model.BBS</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Repository\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201905220801495_InitialDataBaseRollBack.resx">
+      <DependentUpon>201905220801495_InitialDataBaseRollBack.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905230127533_InitialDataBase.resx">
+      <DependentUpon>201905230127533_InitialDataBase.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
- </Project>
+</Project>
